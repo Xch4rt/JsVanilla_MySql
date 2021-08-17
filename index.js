@@ -38,7 +38,7 @@ const mostrar = (articulos) => {
     })
     contenedor.innerHTML = resultados
 }
-
+//ola
 //Mostrar
 fetch(url)
     .then(response => response.json)
