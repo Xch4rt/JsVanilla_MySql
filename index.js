@@ -58,7 +58,7 @@ const on = (element, event, selector, handler) => {
         }
     })
 }
-
+// borrar
 on(document, 'click', '.btnBorrar', e => {
     console.log('se borro')
     // procedimiento de borrado
@@ -67,7 +67,7 @@ on(document, 'click', '.btnBorrar', e => {
 
     alertify.confirm("",
     function(){
-        fetch(url+id{
+        fetch(url+id,{
             method: 'DELETE'
         })
         //uso de promesas
@@ -82,3 +82,25 @@ on(document, 'click', '.btnBorrar', e => {
 
 
 })
+
+
+//editar
+let idForm = 0
+
+on(document,'click','.btnEditar', e=>{
+    console.log('editando')
+    const fila = e.target.parentNode.parentNode
+    idForm = fila.children[0].innerHTML
+
+    const descripcionForm = fila.children[1].innerHTML
+    const precioForm = fila.children[1].innerHTML
+    const stockForm = fila.children[1].innerHTML
+
+    descripcion.value = descripcionForm
+    precio.value = precioForm
+    stock.value = stockForm
+    opcion = 'editar'
+    myModalArticulo.show()
+})
+
+//crear o editar
