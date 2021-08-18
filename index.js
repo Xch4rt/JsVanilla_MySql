@@ -44,3 +44,41 @@ fetch(url)
     .then(response => response.json)
     .then(data => mostrar(data))
     .catch(error => console.log(error))
+
+
+const on = (element, event, selector, handler) => {
+    /*
+        al utilizar target puede ser utilizada para una delegacion al evento
+        closest devuelve el ascendiente mas cercano o el propio elemento actual y 
+        si no se encuentra devuelve null
+    */
+    element.addEventListener(event, e => {
+        if (e.target.closest(selector)){
+            handler(e)
+        }
+    })
+}
+
+on(document, 'click', '.btnBorrar', e => {
+    console.log('se borro')
+    // procedimiento de borrado
+    const fila = e.target.parentNode.parentNode
+    const id = fila.firstElementChild.innerHTML
+
+    alertify.confirm("",
+    function(){
+        fetch(url+id{
+            method: 'DELETE'
+        })
+        //uso de promesas
+        .then(res=>res.json())
+        .then(()=>location.reload())
+        alertify.success("Aceptar")
+    },
+    function()
+    {
+        alertify.error("Cancelar")
+    })
+
+
+})
